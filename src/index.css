@@ -1,45 +1,118 @@
-* {
+*{
   margin: 0px;
   padding: 0px;
+  text-transform: capitalize;
 }
-
-.main-container {
-  padding-left: 20%;
-  padding-right: 20%;
-  min-height: 100vh;
-  background-color: rgba(216, 215, 215, 0.931);
+:root {
+  --primary-color: #4a99d3;
+  --text-primary-color: #260041;
 }
-
-.kotak {
-  height: 20vh;
+body {
+  font-family: "Roboto", sans-serif;
 }
-
-.hari {
-  font-size: 1.2em;
-  font-weight: 500;
-  border-bottom: 0.5px solid rgb(212, 212, 212);
-} 
-
-a {
-  text-decoration: none !important;
-  color: white !important;
+ 
+.pd-container-hz {
+  padding-left: 10%;
+  padding-right: 10%;
 }
-
-a:hover {
-  font-weight: bolder;
+ 
+.header-container {
+  padding: 3% 10% 1% 10%;
 }
-
-.active {
-  border-bottom: 1.5px solid white;
+ 
+.bg-1 {
+  background-color: coral;
 }
-
-.loading-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(90, 90, 90, 0.781);
-  z-index: 1;
-  min-height: 100vh;
+ 
+.bg-0 {
+  background-color: yellow;
 }
+.text-primary {
+  color: var(--primary-color);
+}
+ 
+.garis {
+  border-bottom: var(--primary-color) 2px solid;
+  height: 1.2em;
+  width: 20%;
+  text-align: center;
+}
+ 
+.logo {
+  width: 10%;
+  font-size: 2em;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: var(--primary-color);
+  /* margin-right: auto; */
+}
+ 
+.menu-container {
+  display: flex;
+  /* justify-content: space-around; */
+  width: 30%;
+  margin-right: 10%;
+}
+ 
+.menu-container > div {
+  margin-right: 10%;
+  font-size: 1.1em;
+  margin-top: 2.5%;
+}
+ 
+/* jumbotron 1*/
+.jumbotron-1-container {
+  display: flex;
+  margin-top: 20vh;
+}
+.jumbotron-1-container > div:first-child {
+  width: 65%;
+}
+.jumbotron-1-container > div:last-child {
+  width: 35%;
+}
+.title {
+  font-size: 3.5em;
+  letter-spacing: 0.02em;
+  color: var(--text-primary-color);
+  width: 94%;
+ 
+  line-height: 1.3em;
+}
+ 
+.subtitle {
+  color: var(--text-primary-color);
+  font-size: 20px;
+  line-height: 1.8 em;
+  margin-top: 3vh;
+  letter-spacing: 1px;
+  text-align: justify;
+  width: 95%;
+}
+ 
+.button-container {
+  margin-top: 5vh;
+}
+ 
+.button-container > button {
+  background-color: var(--primary-color);
+  font-size: 20px;
+  border: none;
+  color: whitesmoke;
+  padding: 10px;
+  width: 20%;
+  border-radius: 5px;
+  margin-right: 3%;
+}
+.image-container {
+  margin-top: -12%;
+}
+ 
+/* jumbotron 1 */
+ 
+/* gradient  */
+.gradient-container {
+  background: linear-gradient(180deg, #42a4f5fd -100.39%, #4a99d300 75.85%),
+    #ffffff;
+}
+ 
