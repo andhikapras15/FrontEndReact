@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { Component, useState, useEffect } from "react";
 import {
     Modal,
@@ -25,7 +26,6 @@ function Home() {
             hari: "Rabu",
         },
     ]);
-    // add feauter
     const [input, setInput] = useState({
         kegiatan: "",
         hari: "",
@@ -38,6 +38,17 @@ function Home() {
         kegiatan: "",
         hari: "",
     });
+    const fetchdata = async () => {
+        try {
+            let res = await axios.get(`${API_URL}/activities`);
+            setdataKegiatan(res.data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    useEffect(() => {
+        fetchdata();
+    }, []);
 
     const toggle = () => {
         setisOpen(!isOpen);
@@ -87,10 +98,11 @@ function Home() {
         setisOpenDel(true);
     };
 
-    const onYesDeleteClick = () => {
-        let dataKegiatanMut = dataKegiatan;
-        dataKegiatanMut.splice(indexdel, 1);
-        setdataKegiatan(dataKegiatanMut);
+    const onYesDeleteClick = async () => {
+        // delete data in json-server
+        await axios.delete(`${API_URL}/activities/${dataKegiatan[indexdel].id}`);
+        // refresh data
+        fetchdata();
         setindexdel(-1);
         setisOpenDel(false);
     };
@@ -107,19 +119,29 @@ function Home() {
     };
 
     // saveEdit
-    const onSaveEditCLick = (e) => {
-        // untuk mencegah apa website tidak reload
-        e.preventDefault();
-        let dataKegiatanMut = dataKegiatan;
-        dataKegiatanMut.splice(indexed, 1, inputEdit);
-        setindexded(-1);
-        setisOpenEd(false);
-        setdataKegiatan(dataKegiatanMut);
-        setinputEdit({
-            kegiatan: "",
-            hari: "",
-        });
+    const onSaveEditCLick = async (e) => {
+        try {
+            // untuk mencegah apa website tidak reload
+            e.preventDefault();
+            // UPDATE DATA DI JSON-SERVER
+            await axios.patch(
+                `${API_URL}/activities/${dataKegiatan[indexed].id}`,
+                inputEdit
+            );
+            // refresh data
+            fetchdata();
+
+            setindexded(-1);
+            setisOpenEd(false);
+            setinputEdit({
+                kegiatan: "",
+                hari: "",
+            });
+        } catch (error) {
+            console.log(error);
+        }
     };
+
 
     const renderData = () => {
         return dataKegiatan.map((val, index) => {
