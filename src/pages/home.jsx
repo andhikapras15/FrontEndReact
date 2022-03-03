@@ -10,6 +10,7 @@ import {
     Collapse,
     Alert,
 } from "reactstrap";
+const API_URL = `http://localhost:5000`;
 
 function Home() {
     const [isOpen, setisOpen] = useState(false);
